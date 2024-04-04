@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  ml-application:
+    image: ml-application:latest  # Name and tag the image
+    build:
+      context: .
+      dockerfile: Dockerfile  # Specify the Dockerfile
+    ports:
+      - "5000:5000"
+    deploy:
+      replicas: 1  # Number of replicas for a Docker Swarm deployment
+      update_config:
+        parallelism: 1
+        delay: 10s
+
