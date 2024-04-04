@@ -1,29 +1,3 @@
-
-
-## ML Repository Structure
-```bash
-ml-repo/
-├── ml-application/
-│   ├── app/
-│   │   ├── __init__.py
-│   │   ├── main.py
-│   │   ├── serve.py
-│   │   └── train.py
-│   ├── tests/
-│   │   ├── __init__.py
-│   │   └── test_main.py
-│   ├── deployment/
-│   │   └── docker-compose.yml
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── README.md
-├── .github/
-│   └── workflows/
-│       ├── ci-cd.yml
-        ├── docker-build.yml
-├── .gitignore
-```
-
 # ML Application
 
 This is a basic machine learning application that serves predictions from a linear regression model via a Flask API.
