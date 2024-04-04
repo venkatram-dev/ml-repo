@@ -50,7 +50,7 @@ Note: This code was built and tested on Macbook with Apple M1 chip.
 
 2. Clone the repository
 
-```git clone git@github.com:venkatram-dev/ml-repo-1.git```
+```git clone git@github.com:venkatram-dev/ml-repo.git```
 
 
 3. Change directory to the project root
@@ -147,9 +147,9 @@ The pipeline consists of 2 different yaml files:
 
 For the latest ci/cd pipelines run using github actions, refer to the github link below:
 
-https://github.com/venkatram-dev/ml-repo-1/actions/workflows/ci-cd.yml
+https://github.com/venkatram-dev/ml-repo/actions/workflows/ci-cd.yml
 
-https://github.com/venkatram-dev/ml-repo-1/actions/workflows/docker-build.yml
+https://github.com/venkatram-dev/ml-repo/actions/workflows/docker-build.yml
 
 
 ## Production Deployment
