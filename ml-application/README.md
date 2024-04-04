@@ -29,7 +29,7 @@ Note: This code was built and tested on Macbook with Apple M1 chip.
 
 3. Change directory to the project root
 
-```cd ml-application```
+```cd ml-repo/ml-application```
 
 4. Build the Docker image
 
@@ -39,30 +39,32 @@ Note: This code was built and tested on Macbook with Apple M1 chip.
 
 ```docker tag ml-application:v1 ml-application:latest```
 
-6. Run the Docker container
-
-```docker run -p 5000:5000 ml-application:latest```
-
-7. Open a NEW TERMINAL window and test the API
-
-```
-curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d "{\"feature_value\": 1.5}"
-```
-8.expected output
-
-```
-{"predicted_value":133.0924704590313}
-```
-
-9. run the tests
+6. run the tests
 
 ```docker run --rm -v $(pwd):/app -w /app ml-application:latest pytest```
 
 Note: The tests are also automated using github actions. The CI/CD pipeline is defined in the .github/workflows/ folder
 in the root of the repo. Please scroll down to the CI/CD pipeline section for more details.
 
+7.Run the Docker container
 
-**BELOW ARE OPTIONAL STEPS TO DEPLOY THE APPLICATION USING DOCKER SWARM**
+```docker run -p 5000:5000 ml-application:latest```
+
+8. Open a NEW TERMINAL window and test the API
+
+```
+curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d "{\"feature_value\": 1.5}"
+```
+9.expected output
+
+```
+{"predicted_value":133.0924704590313}
+```
+
+10. press `ctrl+c` on the terminal where the container is running to stop the container.
+
+
+**BELOW ARE ADDTIONAL STEPS TO DEPLOY THE APPLICATION USING DOCKER SWARM**
 
 10. docker swarm initialization
 
