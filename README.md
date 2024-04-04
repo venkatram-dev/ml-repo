@@ -25,6 +25,6 @@ ml-repo/
 ├── .github/
 │   └── workflows/
 │       ├── ci-cd.yml
-        ├── docker-build.yml
+│       ├── docker-build.yml
 ├── .gitignore
 ```
