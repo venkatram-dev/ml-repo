@@ -20,55 +20,77 @@ Note: This code was built and tested on Macbook with Apple M1 chip.
 
 Open a terminal window and follow the steps below to set up the project and run the application.
 
-1. Create folder for the project
+**1**. Create folder for the project
 
 ```mkdir ml-test && cd ml-test```
 
-2. Clone the repository
+
+**2**. Clone the repository
 
 ```git clone git@github.com:venkatram-dev/ml-repo.git```
 
 
-3. Change directory to the project root
+**3**. Change directory to the project root
 
 ```cd ml-repo/ml-application```
 
-4. Build the Docker image
+
+**4**. Build the Docker image
 
 ```docker build -t ml-application:v1 .```
 
-5. tag the Docker image
+
+**5**. tag the Docker image
 
 ```docker tag ml-application:v1 ml-application:latest```
 
-6. run the tests
+
+**6**. run the tests
 
 ```docker run --rm -v $(pwd):/app -w /app ml-application:latest pytest```
 
-Note: The tests are also automated using github actions. The CI/CD pipeline is defined in the .github/workflows/ folder
+Sample output screenshot below
+![](pytest_sample_run.png)
+
+
+**Note**: The tests are also automated using github actions. The CI/CD pipeline is defined in the .github/workflows/ folder
 in the root of the repo. Please scroll down to the CI/CD pipeline section for more details.
 
-7.Run the Docker container
+
+**7**.Run the Docker container
 
 ```docker run -p 5000:5000 ml-application:latest```
 
-8. Open a NEW TERMINAL window and test the API
+Sample output screenshot below
+
+![](docker_app_sample_run.png)
+
+
+**8**. Open a NEW TERMINAL window and test the API
 
 ```
 curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d "{\"feature_value\": 1.5}"
 ```
-9.expected output
+
+
+**9**.expected output
 
 ```
 {"predicted_value":133.0924704590313}
 ```
 
-10. press `ctrl+c` on the terminal where the container is running to stop the container.
+Sample output screenshot below
+
+![](prediction_sample_run.png)
+
+
+**10.** PRESS **ctrl+c** on the previous terminal where the container is running to stop the container.
+
 
 
 **BELOW ARE ADDTIONAL STEPS TO DEPLOY THE APPLICATION USING DOCKER SWARM**
 
-10. docker swarm initialization
+**11**. docker swarm initialization
 
 ```docker swarm init```
 
@@ -76,41 +98,41 @@ If the above command fails, please run the below command.
 
 ```docker swarm init --advertise-addr 127.0.0.1 --listen-addr 127.0.0.1:2377```
 
-11. deploy the application
+**12**. deploy the application
 
 ```docker stack deploy -c deployment/docker-compose.yml ml-stack```
 
-12. check the status of the application
+**13.** check the status of the application
 
 ```docker stack services ml-stack```
 
-13.Open a NEW TERMINAL window and test the API
+**14.** Open a NEW TERMINAL window and test the API
 
 ```
 curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d "{\"feature_value\": 1.5}"
 ```
 
-14.expected output
+**15.** expected output
 
 ```
 {"predicted_value":133.0924704590313}
 ```
 
-15. scale the application
+**16.** scale the application
 
 ```docker service scale ml-stack_ml-application=3```
 
-16.Open a NEW TERMINAL window and test the API
+**17.** Open a NEW TERMINAL window and test the API
 
 ```
 curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d "{\"feature_value\": 1.5}"
 ```
 
-17. tear down the application
+**18.** tear down the application
 
 ```docker stack rm ml-stack```
 
---18. leave the swarm (optional)
+**--19.** leave the swarm (optional)
 
 ```docker swarm leave --force```
 
