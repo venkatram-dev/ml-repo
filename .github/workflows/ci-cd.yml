@@ -1,0 +1,30 @@
+name: Python Application CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  # Specify the Python version
+
+    - name: Install dependencies
+      run: |
+        cd ml-application  # Navigate into the ml-application directory
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        cd ml-application  # Ensure we're in the right directory to run tests
+        pytest tests/
