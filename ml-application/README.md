@@ -18,6 +18,8 @@ Note: This code was built and tested on Macbook with Apple M1 chip.
 
 ## Setup and API Usage
 
+Open a terminal window and follow the steps below to set up the project and run the application.
+
 1. Create folder for the project
 
 ```mkdir ml-test && cd ml-test```
